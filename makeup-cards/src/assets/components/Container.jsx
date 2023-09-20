@@ -7,7 +7,7 @@ import Card from './Card';
 import './Container.scss';
 
 export default function Container(){
-    const products = useSelector((state) => state.products.products);
+    const products = useSelector( state => state.products.products);
     const dispatch = useDispatch();
 
     useEffect( () => {

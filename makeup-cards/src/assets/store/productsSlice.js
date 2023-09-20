@@ -4,13 +4,13 @@ export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
     async function() {
         try{ 
+            // eslint-disable-next-line max-len
             const response = await fetch( 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline' );
             if( !response.ok ) throw new Error( 'Something went wrong' );
             const data = await response.json();
-            console.log(data);
             return data;}
         catch( error ){
-            return isRejectedWithValue( error.message );
+            return isRejectedWithValue( error );
         }
     }
 );
@@ -21,9 +21,41 @@ export const productsSlice = createSlice({
         products: [],
         status: null,
         error: null,
+        filterBtnState: false
     },
     reducers: {
-        
+        setLikeProp( state, action ){
+            const products = state.products;
+            const id = action.payload;
+            const localStorageProducts = JSON.parse( localStorage.getItem( 'products' ));
+
+            for ( let i = 0; i< products.length; i++ ){
+                if ( products[ i ].id === id ){
+                    if( products[ i ].isLiked === undefined ) products[ i ].isLiked = true;
+                    else{
+                        products[ i ].isLiked === true ? products[ i ].isLiked = false : products[ i ].isLiked = true; 
+                    }
+                    localStorageProducts[ i ] = products[ i ];
+                }
+            }
+            localStorage.setItem( 'products', JSON.stringify( localStorageProducts ));
+        },
+
+        filterProducts( state ){
+            state.filterBtnState = !state.filterBtnState;
+            if( state.filterBtnState ){
+                state.products = state.products.filter( product => product.isLiked === true );
+            } else {
+                state.products = JSON.parse( localStorage.getItem( 'products' ));
+            }
+        },
+
+        deleteProductCard( state, action ){
+            state.products = state.products.filter( product => product.id !== action.payload );
+            let localStorageProducts = JSON.parse( localStorage.getItem( 'products' ));
+            localStorageProducts = localStorageProducts.filter( product => product.id !== action.payload );
+            localStorage.setItem( 'products', JSON.stringify( localStorageProducts ));
+        }
     },
     extraReducers: {
         [ fetchProducts.pending ]: ( state ) => {
@@ -33,6 +65,7 @@ export const productsSlice = createSlice({
         [ fetchProducts.fulfilled ]: ( state, action ) => {
             state.status = 'resolved';
             state.products = action.payload;
+            localStorage.setItem( 'products', JSON.stringify( state.products ));
         },
         [ fetchProducts.rejected ]: ( state, action ) => {
             state.status = 'rejected';
@@ -41,6 +74,6 @@ export const productsSlice = createSlice({
     }
 });
 
-export const { refreshProducts } = productsSlice.actions;
+export const { setLikeProp, filterProducts, deleteProductCard } = productsSlice.actions;
 
 export default productsSlice.reducer;

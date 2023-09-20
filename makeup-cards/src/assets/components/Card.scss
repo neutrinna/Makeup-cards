@@ -1,8 +1,8 @@
 .Card{
+    position: relative;
     display: grid;
     gap: 10px;
-    
-    width: 20%;
+
     margin: 1%;
     padding: 15px;
     border-radius: 15px;
@@ -11,6 +11,7 @@
 
     &__img{
         justify-self: center;
+        margin-top: 10%;
     }
 
     &__name{
@@ -19,5 +20,23 @@
 
     &__rating{
         align-self: end;
+    }
+
+    &__like,
+    &__delete{
+        position: absolute;
+        top: 7%;
+
+        cursor: pointer;
+    }
+    &__like{
+        left: 10%;
+                
+        height: 7%;
+    }
+    &__delete{
+        right: 10%;
+                
+        height: 6%;
     }
 }

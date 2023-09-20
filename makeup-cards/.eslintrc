@@ -5,6 +5,8 @@
     ],
     "rules": {
         "no-unused-vars": "warn",
+        "object-curly-spacing": ["error", "always"],
+        "array-bracket-spacing": ["error", "always"],
         "no-console": "warn",
         "quotes": ["error", "single"],
         "jsx-quotes": ["error", "prefer-double"],
