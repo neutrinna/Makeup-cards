@@ -5,7 +5,7 @@ export const fetchProducts = createAsyncThunk(
     async function() {
         try{ 
             // eslint-disable-next-line max-len
-            const response = await fetch( 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline' );
+            const response = await fetch( 'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline' );
             if( !response.ok ) throw new Error( 'Something went wrong' );
             const data = await response.json();
             return data;}
