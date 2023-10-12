@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 import { useSelector } from 'react-redux';
 
@@ -13,10 +14,16 @@ import './App.scss';
 function App() {
     const isLoading = useSelector( state => state.products.status );
     const error = useSelector( state => state.products.error );
+    const nodeRef = useRef(null);
 
     return (
         <>
-            { isLoading === 'loading'&&<Loader/> }
+            <CSSTransition nodeRef={nodeRef} in = { isLoading === 'loading' }
+                timeout = { 1000 } classNames = "Loader" mountOnEnter unmountOnExit >
+                <div ref={nodeRef}>
+                    <Loader /> 
+                </div>
+            </CSSTransition>
             { isLoading === 'rejected'&& <Error { ...error }/> }
             <div className="App"> 
                 <Header/>

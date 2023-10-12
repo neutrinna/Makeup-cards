@@ -13,6 +13,24 @@
     background-color: rgb(255, 255, 255);
 }
 
+.Loader-enter {
+    opacity: 0;
+    }
+
+.Loader-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+    }
+
+.Loader-exit {
+    opacity: 1;
+    }
+
+.Loader-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+    }
+
 .lds-roller {
     display: inline-block;
     position: relative;
@@ -32,7 +50,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: rgb(253, 110, 43);
+    background: rgb(206, 98, 145);
     margin: -4px 0 0 -4px;
     } 
 

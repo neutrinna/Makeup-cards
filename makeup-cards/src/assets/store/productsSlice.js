@@ -57,20 +57,20 @@ export const productsSlice = createSlice({
             localStorage.setItem( 'products', JSON.stringify( localStorageProducts ));
         }
     },
-    extraReducers: {
-        [ fetchProducts.pending ]: ( state ) => {
+    extraReducers: ( builder ) => {
+        builder.addCase( fetchProducts.pending, ( state ) => {
             state.status = 'loading';
             state.error = null;
-        },
-        [ fetchProducts.fulfilled ]: ( state, action ) => {
+        });
+        builder.addCase( fetchProducts.fulfilled, ( state, action ) => {
             state.status = 'resolved';
             state.products = action.payload;
             localStorage.setItem( 'products', JSON.stringify( state.products ));
-        },
-        [ fetchProducts.rejected ]: ( state, action ) => {
+        });
+        builder.addCase( fetchProducts.rejected, ( state, action ) => {
             state.status = 'rejected';
             state.error = action.payload;
-        },
+        });
     }
 });
 
