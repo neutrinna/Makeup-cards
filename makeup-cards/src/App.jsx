@@ -14,13 +14,13 @@ import './App.scss';
 function App() {
     const isLoading = useSelector( state => state.products.status );
     const error = useSelector( state => state.products.error );
-    const nodeRef = useRef(null);
+    const nodeRef = useRef( null );
 
     return (
         <>
-            <CSSTransition nodeRef={nodeRef} in = { isLoading === 'loading' }
+            <CSSTransition nodeRe ={ nodeRef } in = { isLoading === 'loading' }
                 timeout = { 1000 } classNames = "Loader" mountOnEnter unmountOnExit >
-                <div ref={nodeRef}>
+                <div ref = { nodeRef }>
                     <Loader /> 
                 </div>
             </CSSTransition>
