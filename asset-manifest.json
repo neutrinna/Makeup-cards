@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Makeup-cards/static/css/main.b84cbe20.css",
-    "main.js": "/Makeup-cards/static/js/main.d53cfe5d.js",
+    "main.js": "/Makeup-cards/static/js/main.e7c30856.js",
     "static/media/Montserrat-Regular.ttf": "/Makeup-cards/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "static/media/warning-error.svg": "/Makeup-cards/static/media/warning-error.25a4101e4781281fc12ac4c297f9cedd.svg",
     "static/media/heart.svg": "/Makeup-cards/static/media/heart.20f9cfb77d1653d4175d861457ba2b70.svg",
@@ -9,10 +9,10 @@
     "static/media/heart_filled.svg": "/Makeup-cards/static/media/heart_filled.445cd6fe767078677a004b699c674640.svg",
     "index.html": "/Makeup-cards/index.html",
     "main.b84cbe20.css.map": "/Makeup-cards/static/css/main.b84cbe20.css.map",
-    "main.d53cfe5d.js.map": "/Makeup-cards/static/js/main.d53cfe5d.js.map"
+    "main.e7c30856.js.map": "/Makeup-cards/static/js/main.e7c30856.js.map"
   },
   "entrypoints": [
     "static/css/main.b84cbe20.css",
-    "static/js/main.d53cfe5d.js"
+    "static/js/main.e7c30856.js"
   ]
 }
