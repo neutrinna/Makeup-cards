@@ -18,7 +18,7 @@ function App() {
 
     return (
         <>
-            <CSSTransition nodeRe ={ nodeRef } in = { isLoading === 'loading' }
+            <CSSTransition nodeRef ={ nodeRef } in = { isLoading === 'loading' }
                 timeout = { 1000 } classNames = "Loader" mountOnEnter unmountOnExit >
                 <div ref = { nodeRef }>
                     <Loader /> 
